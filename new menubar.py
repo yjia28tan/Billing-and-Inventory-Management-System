@@ -1,5 +1,5 @@
 import sqlite3
-conn = sqlite3.connect('Poh Cheong Tong')
+conn = sqlite3.connect('Poh Cheong Tong DB')
 
 import tkinter  as tk 
 from tkinter import *
