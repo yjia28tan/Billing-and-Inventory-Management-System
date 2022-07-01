@@ -1,5 +1,5 @@
 import sqlite3
-conn = sqlite3.connect('Poh Cheong Tong')
+conn = sqlite3.connect('Poh Cheong Tong DB')
 
 import tkinter  as tk 
 from tkinter import *
@@ -13,8 +13,8 @@ window.configure(bg = '#DFEEFF')
 page1 = Frame(window) #Log-in
 page2 = Frame(window) #Home
 page3 = Frame(window) #Inventory
-page4 = Frame(window) #
-page5 = Frame(window) #Billing
+page4 = Frame(window) #Billing
+page5 = Frame(window) #Analysis
 
 for frame in (page1, page2, page3, page4, page5):
     frame.grid(row=0, column=0, sticky='nsew')
@@ -25,7 +25,7 @@ def show_frame(frame):
 show_frame(page1)
 
 
-# ==== Create the menubar =====
+# ========== Create the menubar ===========
 min_w = 70  # Minimum width of the frame
 max_w = 145  # Maximum width of the frame
 cur_width = min_w  # Increasing width of the frame
