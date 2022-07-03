@@ -44,7 +44,8 @@ def insert_data():
         msg = "Password did not match"
     else:
         check_count += 1
-    if user_email.get() == "" or user_id.get() == "" or user_name.get() == "" or role.get() == "" or password.get() == "" or con_password.get() == "":
+    if user_email.get() == "" or user_id.get() == "" or user_name.get() == "" or role.get() == "" or \
+            password.get() == "" or con_password.get() == "":
         msg = "Input box cannot be empty"
     else:
         check_count += 1
@@ -52,7 +53,9 @@ def insert_data():
         try:
             conn = sqlite3.connect('Poh Cheong Tong DB')
             cur = conn.cursor()
-            cur.execute("INSERT INTO user VALUES (:user_id, :user_name, :user_email, :role, :password)",  {'user_id': user_id.get(), 'user_name': user_name.get(), 'user_email': user_email.get(), 'role': role.get(), 'password': password.get()})
+            cur.execute("INSERT INTO user VALUES (:user_id, :user_name, :user_email, :role, :password)",
+                        {'user_id': user_id.get(), 'user_name': user_name.get(), 'user_email': user_email.get(),
+                         'role': role.get(), 'password': password.get()})
             conn.commit()
             messagebox.showinfo('confirmation', 'Record Saved')
         except Exception as ect:
