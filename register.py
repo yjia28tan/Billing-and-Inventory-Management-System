@@ -1,5 +1,4 @@
 # Register
-
 import sqlite3
 import tkinter as tk
 import re
@@ -8,11 +7,13 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
+# Create Window
 window = Tk()
 window.title("Poh Cheong Tong Medical Hall System")
 window.configure(bg='#DFEEFF')
 window.state('zoomed')
 
+# Create Database
 conn = sqlite3.connect('Poh Cheong Tong DB')
 cur = conn.cursor()
 cur.execute('''CREATE TABLE IF NOT EXISTS user (
@@ -60,6 +61,15 @@ def insert_data():
         messagebox.showinfo('message', msg)
 
 
+# Show password
+def show_password():
+    if btn_value.get() == 1:
+        password_entry.config(show='')
+        con_password_entry.config(show='')
+    else:
+        password_entry.config(show='*')
+        con_password_entry.config(show='*')
+
 # Register Title
 Label(window, text='Register', font=('Sigmar One', 75), fg='#707070', bg='#DFEEFF').place(x=600, y=50)
 
@@ -93,12 +103,18 @@ list_picker.place(x=600, y=420)
 # Password Label and Text Entry Box
 Label(window, text='Password', font=('Arial', 20, 'bold'), bg='#DFEEFF').place(x=600, y=450)
 password = StringVar()
-Entry(window, textvariable=password, font=20).place(x=600, y=490)
+password_entry = Entry(window, textvariable=password, font=20, show='*')
+password_entry.place(x=600, y=490)
 
 # Confirm Password Label and Text Entry Box
 Label(window, text='Confirm Password', font=('Arial', 20, 'bold'), bg='#DFEEFF').place(x=600, y=520)
 con_password = StringVar()
-Entry(window, textvariable=con_password, font=20).place(x=600, y=560)
+con_password_entry = Entry(window, textvariable=con_password, font=20, show='*')
+con_password_entry.place(x=600, y=560)
+
+# Check Button to show and hide password
+btn_value = IntVar(value=0)
+Checkbutton(window, text="Show password", variable=btn_value, command=show_password).place(x=600, y=590)
 
 # Register Button
 Button(window, text='Register', font=('Segoe UI', 15, 'bold'), fg='#FFFFFF', bg='#8AC1FF', relief='groove',
