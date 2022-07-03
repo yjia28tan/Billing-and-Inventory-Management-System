@@ -114,7 +114,7 @@ con_password_entry.place(x=600, y=560)
 
 # Check Button to show and hide password
 btn_value = IntVar(value=0)
-Checkbutton(window, text="Show password", variable=btn_value, command=show_password).place(x=600, y=590)
+Checkbutton(window, text="Show password", variable=btn_value, command=show_password, bg='#DFEEFF').place(x=600, y=590)
 
 # Register Button
 Button(window, text='Register', font=('Segoe UI', 15, 'bold'), fg='#FFFFFF', bg='#8AC1FF', relief='groove',
