@@ -7,7 +7,7 @@ from tkinter import *
 from PIL import Image, ImageTk
 
 window = Tk()
-window.geometry("1440x1024")
+window.state("zoomed")
 window.title("Poh Cheong Tong Medical Hall System")
 window.configure(bg='#DFEEFF')
 
@@ -82,6 +82,7 @@ billing = ImageTk.PhotoImage(Image.open('Bill.png').resize((40, 40), resample=Im
 inventory = ImageTk.PhotoImage(Image.open('Inventory.png').resize((40, 40), resample=Image.LANCZOS))
 analysis = ImageTk.PhotoImage(Image.open('Analysis.png').resize((40, 40), resample=Image.LANCZOS))
 register = ImageTk.PhotoImage(Image.open('Register.png').resize((40, 40), resample=Image.LANCZOS))
+logo = ImageTk.PhotoImage(Image.open('Logo.jpeg').resize((50, 50), resample=Image.LANCZOS))
 
 window.update()  # For the width to get updated
 
@@ -110,5 +111,18 @@ menuFrame.bind('<Leave>', lambda e: contractForHome())
 
 # So that it does not depend on the widgets inside the frame
 menuFrame.grid_propagate(False)
+
+# Rectange Frame
+RectangleFrame = Frame(window, bg='#492F7C', highlightbackground='white', highlightthickness=1)
+RectangleFrame.place(x=0, y=0, height=100, width=1550)
+
+RectangleFrame2 = Frame(window, bg='#492F7C', highlightbackground='white', highlightthickness=1)
+RectangleFrame2.place(x=0, y=0, height=100, width=150)
+
+Logo = Label(window, image=logo)
+Logo.place(x=45, y=18)
+
+Label = Label(window, text='Poh Cheong Tong Medical Hall System', font=('Arial', 30), fg='white', bg='#492F7C')
+Label.place(x=160, y=30)
 
 window.mainloop()
