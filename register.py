@@ -41,7 +41,7 @@ def insert_data():
     else:
         check_count += 1
     if password.get() != con_password.get():
-        msg = "Password did not match"
+        msg = "Password and confirm password did not match"
     else:
         check_count += 1
     if user_email.get() == "" or user_id.get() == "" or user_name.get() == "" or role.get() == "" or \
@@ -100,7 +100,7 @@ Entry(window, textvariable=user_name, font=20).place(x=600, y=350)
 Label(window, text='Role', font=('Arial', 20, 'bold'), bg='#DFEEFF').place(x=600, y=380)
 role = tk.StringVar()
 list_picker = ttk.Combobox(window, width=34, textvariable=role)
-list_picker['values'] = (' Admin', ' User')
+list_picker['values'] = ('Admin', 'Staff')
 list_picker.place(x=600, y=420)
 
 # Password Label and Text Entry Box
@@ -125,6 +125,6 @@ Button(window, text='Register', font=('Segoe UI', 15, 'bold'), fg='#FFFFFF', bg=
 
 # Cancel Button
 Button(window, text='Cancel', font=('Segoe UI', 15, 'bold'), fg='#FFFFFF', bg='#FF8A8A', relief='groove',
-       command=None).place(x=1030, y=550)
+       command=NONE).place(x=1030, y=550)
 
 window.mainloop()
