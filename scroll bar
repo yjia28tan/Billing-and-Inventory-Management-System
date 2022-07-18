@@ -1,0 +1,37 @@
+    orderList_frame = Frame(addInvoice, width=700, bg='#DFEEFF', relief=RIDGE)
+    orderList_frame.place(x=5, y=300, height=400, width=1360)
+
+    order_title_label = Label(orderList_frame, text="Order Lists", font=("times new roman", 15, "bold"), bg='#DFEEFF')
+    order_title_label.pack(side=TOP, fill="x")
+
+    order_tabel_frame = Frame(orderList_frame)
+    order_tabel_frame.place(x=10, y=25, height=300, width=1345)
+
+    scrollbar_order_x = Scrollbar(order_tabel_frame, orient=HORIZONTAL)
+    scrollbar_order_y = Scrollbar(order_tabel_frame, orient=VERTICAL)
+
+    order_tabel = ttk.Treeview(order_tabel_frame, style="Treeview",
+                               columns=("PK id", "product id", "name", 'quantity', 'total price'),
+                               selectmode="browse", height=6, yscrollcommand=scrollbar_order_y.set,
+                               xscrollcommand=scrollbar_order_x.set)
+    order_tabel.heading("PK id", text="No.")
+    order_tabel.heading("product id", text="Product ID")
+    order_tabel.heading("name", text="Product Name")
+    order_tabel.heading("quantity", text="Quantity")
+    order_tabel.heading("total price", text="Total Price")
+    order_tabel["displaycolumns"] = ("PK id", "name", "quantity", "total price")
+    order_tabel["show"] = "headings"
+    order_tabel.column("PK id", width=100, anchor='center', stretch=NO)
+    order_tabel.column("product id", width=100, anchor='center', stretch=NO)
+    order_tabel.column("name", width=100, anchor='center', stretch=NO)
+    order_tabel.column("quantity", width=100, anchor='center', stretch=NO)
+    order_tabel.column("total price", width=100, anchor='center', stretch=NO)
+
+    scrollbar_order_x.pack(side=BOTTOM, fill=X)
+    scrollbar_order_x.configure(command=order_tabel.xview)
+    scrollbar_order_y.pack(side=RIGHT, fill=Y)
+    scrollbar_order_y.configure(command=order_tabel.yview)
+
+    order_tabel.pack(fill=BOTH, expand=1)
+    order_tabel.bind("<ButtonRelease-1>", clicktranstable)
+    order_tabel.bind("<ButtonRelease-1>", add_item_bt)
